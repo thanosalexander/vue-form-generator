@@ -1,8 +1,14 @@
 <template lang="pug">
+div.wrapper
 	label
 		input(type="checkbox", v-model="value", :autocomplete="schema.autocomplete", :disabled="disabled", :name="schema.inputName", :id="getFieldID(schema)")
 		span.label(:data-on="schema.textOn || 'On'", :data-off="schema.textOff || 'Off'", :for="getFieldID(schema)")
 		span.handle
+	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		span(v-html="schema.label")
+			i.icon
+			div.helpText(v-html='schema.help')
+	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
 </template>
 
 <script>

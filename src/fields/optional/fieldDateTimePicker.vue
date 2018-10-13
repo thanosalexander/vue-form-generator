@@ -1,8 +1,14 @@
 <template lang="pug">
+.wrapper(v-attributes="'wrapper'")
 	.input-group.date
 		input.form-control(type="text", v-model="value", :autocomplete="schema.autocomplete", :disabled="disabled", :placeholder="schema.placeholder", :readonly="schema.readonly", :name="schema.inputName", :id="getFieldID(schema)")
 		span.input-group-addon
 			span.glyphicon.glyphicon-calendar
+	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		span(v-html="schema.label")
+			i.icon
+			div.helpText(v-html='schema.help')
+	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
 </template>
 
 <script>

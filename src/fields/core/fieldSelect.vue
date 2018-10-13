@@ -1,5 +1,6 @@
 <template lang="pug">
-	select.form-control(v-model="value", :disabled="disabled", :name="schema.inputName", :id="getFieldID(schema)", :class="schema.fieldClasses", v-attributes="'input'")
+.wrapper(v-attributes="'wrapper'")
+	select(v-model="value", :disabled="disabled", :name="schema.inputName", :id="getFieldID(schema)", :class="schema.fieldClasses", v-attributes="'input'")
 		option(v-if="!selectOptions.hideNoneSelectedText", :disabled="schema.required", :value="null") {{ selectOptions.noneSelectedText || "&lt;Nothing selected&gt;" }}
 
 		template(v-for="item in items")
@@ -7,6 +8,11 @@
 				option(v-if="item.ops", v-for="i in item.ops", :value="getItemValue(i)") {{ getItemName(i) }}
 
 			option(v-if="!item.group", :value="getItemValue(item)") {{ getItemName(item) }}
+	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		span(v-html="schema.label")
+			i.icon
+			div.helpText(v-html='schema.help')
+	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}	
 </template>
 
 <script>

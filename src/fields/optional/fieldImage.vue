@@ -1,9 +1,14 @@
 <template lang="pug">
-	div.wrapper
-		input.form-control.link(type="text", v-show="schema.hideInput !== true", v-model="wrappedValue", :autocomplete="schema.autocomplete", :disabled="disabled", :placeholder="schema.placeholder", :readonly="schema.readonly")
-		input.form-control.file(type="file", v-if="schema.browse !== false", :disabled="disabled", @change="fileChanged", :name="schema.inputName")
-		.preview(:style="previewStyle")
-			.remove(title="Remove image", @click="remove")
+div.wrapper
+	input.form-control.link(type="text", v-show="schema.hideInput !== true", v-model="wrappedValue", :autocomplete="schema.autocomplete", :disabled="disabled", :placeholder="schema.placeholder", :readonly="schema.readonly")
+	input.form-control.file(type="file", v-if="schema.browse !== false", :disabled="disabled", @change="fileChanged", :name="schema.inputName")
+	.preview(:style="previewStyle")
+		.remove(title="Remove image", @click="remove")
+	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		span(v-html="schema.label")
+			i.icon
+			div.helpText(v-html='schema.help')
+	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
 </template>
 
 <script>

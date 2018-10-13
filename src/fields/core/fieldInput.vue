@@ -42,8 +42,7 @@
 	/>
 
 	
-	<label v-if="fieldTypeHasLabel(schema)" :for="getFieldID(schema)" :class="schema.labelClasses">
-				
+	<label v-if="fieldTypeHasLabel(schema)" :for="getFieldID(schema)" :class="schema.labelClasses">			
 		<span v-html="schema.label"></span>
 		<span v-if='schema.help' class="help">
 			<i class="icon"></i>
@@ -54,8 +53,6 @@
 	<span class="helper" v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'">
 		{{value}}
 	</span>
-
-	
 
 
 </div>	

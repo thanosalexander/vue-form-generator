@@ -1,4 +1,5 @@
 <template lang="pug">
+div.wrapper
 	multiselect(
 		:id="selectOptions.id",
 		:options="options",
@@ -43,6 +44,11 @@
 	)
 		span(slot="noResult").
 			{{ selectOptions.noResult }}
+	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		span(v-html="schema.label")
+			i.icon
+			div.helpText(v-html='schema.help')
+	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
 </template>
 <script>
 import abstractField from "../abstractField";
