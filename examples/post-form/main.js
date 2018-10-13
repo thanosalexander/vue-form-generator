@@ -52,6 +52,19 @@ var vm = new Vue({
 					disabled: true
 				},
 				{
+				    type: "radios",
+				    label: "Very best friend",
+				    model: "friend",
+				    values: [
+				        "James",
+				        "Nadia",
+				        "Paul",
+				        "Christelle",
+				        "Marc",
+				        "Marie"
+				    ]
+				},
+				{
 					type: "input",
 					inputType: "text",
 					label: "Name",

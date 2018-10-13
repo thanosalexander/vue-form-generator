@@ -10,14 +10,14 @@
 		</div>
 
 			<label v-if="fieldTypeHasLabel(field)" :for="getFieldID(field)" :class="field.labelClasses">
-			<span v-html="field.label"></span>
+			{{<span v-html="field.label"></span>}}
 			<span v-if='field.help' class="help">
 				<i class="icon"></i>
 				<div class="helpText" v-html='field.help'></div>
 			</span>
 		</label>
 
-		testtsdfsdfsdfsgsdgdfgdfsg
+	
 
 
 		<div v-if="field.hint" class="hint" v-html="fieldHint(field)"></div>

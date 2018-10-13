@@ -1,6 +1,6 @@
 <template lang="pug">
 .wrapper(v-attributes="'wrapper'")
-	input.form-control(
+	input(
 		:id="getFieldID(schema)",
 		:type="schema.inputType.toLowerCase()",
 		:value="value",
