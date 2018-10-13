@@ -24,7 +24,7 @@
 	</label>
 
 	<span class="helper" v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'">
-		| {{schema.label}}
+		{{schema.label}}
 		<span v-if='schema.help' class="help">
 			<i class="icon"></i>
 			<div class="helpText" v-html='schema.help'></div>

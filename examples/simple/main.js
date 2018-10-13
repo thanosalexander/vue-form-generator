@@ -63,7 +63,8 @@ var vm = new Vue({
 					required: true,
 					disabled: false,
 					placeholder: "User's name",
-					validator: VueFormGenerator.validators.string
+					validator: VueFormGenerator.validators.string,
+					help:'errrrrrrrrrr'
 				},
 				{
 					type: "input",
