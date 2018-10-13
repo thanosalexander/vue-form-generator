@@ -41,29 +41,7 @@ var vm = new Vue({
 		},
 		schema: {
 			fields: [
-				{
-					type: "input",
-					inputType: "text",
-					label: "ID",
-					model: "id",
-					inputName: "id",
-					readonly: true,
-					featured: false,
-					disabled: true
-				},
-				{
-				    type: "radios",
-				    label: "Very best friend",
-				    model: "friend",
-				    values: [
-				        "James",
-				        "Nadia",
-				        "Paul",
-				        "Christelle",
-				        "Marc",
-				        "Marie"
-				    ]
-				},
+			
 				{
 					type: "input",
 					inputType: "text",
@@ -76,64 +54,10 @@ var vm = new Vue({
 					disabled: false,
 					placeholder: "User's name",
 					validator: VueFormGenerator.validators.string,
-					attributes: []
+					attributes: [],
+					help:'eeeeeeeeeee'
 				},
-				{
-					type: "input",
-					inputType: "password",
-					label: "Password",
-					model: "password",
-					inputName: "password",
-					min: 6,
-					required: true,
-					hint: "Minimum 6 characters",
-					validator: VueFormGenerator.validators.string
-				},
-				{
-					type: "input",
-					inputType: "email",
-					label: "E-mail",
-					model: "email",
-					inputName: "email",
-					placeholder: "User's e-mail address",
-					validator: VueFormGenerator.validators.email
-				},
-				{
-					type: "select",
-					label: "Skills",
-					model: "skills",
-					inputName: "skills",
-					required: true,
-					values: [
-						"HTML5",
-						"Javascript",
-						"CSS3",
-						"CoffeeScript",
-						"AngularJS",
-						"ReactJS",
-						"VueJS"
-					],
-					validator: VueFormGenerator.validators.string
-				}, {
-					type: "upload",
-					label: "Photo",
-					model: "photo",
-					inputName: "photo",
-					onChanged(model, schema, event) {
-						console.log(model, schema, event);
-					}
-				},
-				{
-					type: "checkbox",
-					label: "Status",
-					model: "status",
-					inputName: "status",
-					multi: true,
-					readonly: false,
-					featured: false,
-					disabled: false,
-					default: true
-				},
+				
 				{
 					type: "submit",
 					label: "",

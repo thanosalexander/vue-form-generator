@@ -4,11 +4,11 @@ div.wrapper
 	input.form-control.file(type="file", v-if="schema.browse !== false", :disabled="disabled", @change="fileChanged", :name="schema.inputName")
 	.preview(:style="previewStyle")
 		.remove(title="Remove image", @click="remove")
-	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
-		span(v-html="schema.label")
-			i.icon
-			div.helpText(v-html='schema.help')
-	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
+	label.control-label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+			| {{schema.label}}
+			span(v-html="schema.label")
+				i.icon
+				div.helpText(v-html='schema.help')
 </template>
 
 <script>

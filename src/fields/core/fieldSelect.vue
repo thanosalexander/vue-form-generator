@@ -6,13 +6,12 @@
 		template(v-for="item in items")
 			optgroup(v-if="item.group", :label="getGroupName(item)")
 				option(v-if="item.ops", v-for="i in item.ops", :value="getItemValue(i)") {{ getItemName(i) }}
-
 			option(v-if="!item.group", :value="getItemValue(item)") {{ getItemName(item) }}
-	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+	label.control-label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		| {{schema.label}}
 		span(v-html="schema.label")
 			i.icon
 			div.helpText(v-html='schema.help')
-	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}	
 </template>
 
 <script>

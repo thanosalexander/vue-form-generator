@@ -11,7 +11,7 @@
 				:class="schema.fieldClasses"
 				v-attributes="'input'"
 			/>
-			{{schema.label}}
+			| {{schema.label}}
 			<i class="check-box"></i>
 		</label>
 
@@ -24,7 +24,11 @@
 	</label>
 
 	<span class="helper" v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'">
-		{{value}}
+		| {{schema.label}}
+		<span v-if='schema.help' class="help">
+			<i class="icon"></i>
+			<div class="helpText" v-html='schema.help'></div>
+		</span>
 	</span>
 
 	</div>		

@@ -5,12 +5,11 @@
 			input(:id="getFieldID(schema)", type="radio", :disabled="disabled", :name="id", @click="onSelection(item)", :value="getItemValue(item)", :checked="isItemChecked(item)", :class="schema.fieldClasses", v-attributes="'input'")
 			i.check-box
 			| {{ getItemName(item) }}
-	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+	label.control-label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		| {{schema.label}}
 		span(v-html="schema.label")
 			i.icon
 			div.helpText(v-html='schema.help')
-	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}	
-
 </template>
 
 <script>

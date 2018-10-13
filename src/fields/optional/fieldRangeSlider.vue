@@ -1,11 +1,11 @@
 <template lang="pug">
 div.wrapper
 	input(type="text", :autocomplete="schema.autocomplete", :data-disable="disabled", :data-max="schema.max", :data-min="schema.min", :data-step="schema.step", :placeholder="schema.placeholder", :readonly="schema.readonly", :name="schema.inputName")
-	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+	label.control-label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+		| {{schema.label}}
 		span(v-html="schema.label")
 			i.icon
 			div.helpText(v-html='schema.help')
-	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
 </template>
 
 <script>

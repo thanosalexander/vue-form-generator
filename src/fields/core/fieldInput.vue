@@ -42,8 +42,8 @@
 	/>
 
 	
-	<label v-if="fieldTypeHasLabel(schema)" :for="getFieldID(schema)" :class="schema.labelClasses">			
-		<span v-html="schema.label"></span>
+	<label class='control-label' v-if="fieldTypeHasLabel(schema)" :for="getFieldID(schema)" :class="schema.labelClasses">			
+		| {{schema.label}}
 		<span v-if='schema.help' class="help">
 			<i class="icon"></i>
 			<div class="helpText" v-html='schema.help'></div>

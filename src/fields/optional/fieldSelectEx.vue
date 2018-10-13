@@ -3,11 +3,11 @@ div.wrapper
 	select.selectpicker(v-model="value", :disabled="disabled", :multiple="schema.multiSelect", :title="schema.placeholder", data-width="100%", :name="schema.inputName")
 		option(:disabled="schema.required", v-if="schema.multiSelect !== true", :value="null", :selected="value == undefined")
 		option(v-for="item in items", :value="getItemValue(item)") {{ getItemName(item) }}
-	label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
-		span(v-html="schema.label")
-			i.icon
-			div.helpText(v-html='schema.help')
-	span.helper(v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'") | {{value}}
+	label.control-label(v-if="fieldTypeHasLabel(schema)",:for="getFieldID(schema)",:class="schema.labelClasses")
+			| {{schema.label}}
+			span(v-html="schema.label")
+				i.icon
+				div.helpText(v-html='schema.help')
 </template>
 
 <script>
