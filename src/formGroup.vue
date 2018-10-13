@@ -9,15 +9,7 @@
 			</div>
 		</div>
 
-			<label v-if="fieldTypeHasLabel(field)" :for="getFieldID(field)" :class="field.labelClasses">
-			<span v-html="field.label"></span>
-			<span v-if='field.help' class="help">
-				<i class="icon"></i>
-				<div class="helpText" v-html='field.help'></div>
-			</span>
-		</label>
 
-		
 
 		<div v-if="field.hint" class="hint" v-html="fieldHint(field)"></div>
 
@@ -27,8 +19,8 @@
 	</div>
 </template>
 <script>
-import { get as objGet, isNil, isFunction } from "lodash";
-import { slugifyFormID } from "./utils/schema";
+import { isFunction } from "lodash";
+
 import formMixin from "./formMixin.js";
 import fieldComponents from "./utils/fieldsLoader.js";
 
@@ -57,30 +49,7 @@ export default {
 		}
 	},
 	methods: {
-		// Should field type have a label?
-		fieldTypeHasLabel(field) {
-			if (isNil(field.label)) return false;
-
-			let relevantType = "";
-			if (field.type === "input") {
-				relevantType = field.inputType;
-			} else {
-				relevantType = field.type;
-			}
-
-			switch (relevantType) {
-				case "button":
-				case "submit":
-				case "reset":
-					return false;
-				default:
-					return true;
-			}
-		},
-		getFieldID(schema) {
-			const idPrefix = objGet(this.options, "fieldIdPrefix", "");
-			return slugifyFormID(schema, idPrefix);
-		},
+		
 		// Get type of field 'field-xxx'. It'll be the name of HTML element
 		getFieldType(fieldSchema) {
 			return "field-" + fieldSchema.type;

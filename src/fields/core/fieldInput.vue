@@ -1,41 +1,65 @@
-<template lang="pug">
-input(
-	:id="getFieldID(schema)",
-	:type="schema.inputType.toLowerCase()",
-	:value="value",
-	@input="onInput",
-	@blur="onBlur",
-	:class="schema.fieldClasses",
-	@change="schema.onChange || null",
-	:disabled="disabled",
-	:accept="schema.accept",
-	:alt="schema.alt",
-	:autocomplete="schema.autocomplete",
-	:checked="schema.checked",
-	:dirname="schema.dirname",
-	:formaction="schema.formaction",
-	:formenctype="schema.formenctype",
-	:formmethod="schema.formmethod",
-	:formnovalidate="schema.formnovalidate",
-	:formtarget="schema.formtarget",
-	:height="schema.height",
-	:list="schema.list",
-	:max="schema.max",
-	:maxlength="schema.maxlength",
-	:min="schema.min",
-	:minlength="schema.minlength",
-	:multiple="schema.multiple",
-	:name="schema.inputName",
-	:pattern="schema.pattern",
-	:placeholder="schema.placeholder",
-	:readonly="schema.readonly",
-	:required="schema.required",
-	:size="schema.size",
-	:src="schema.src",
-	:step="schema.step",
-	:width="schema.width",
-	:files="schema.files"
-	v-attributes="'input'")
+<template>
+
+<div class="wrapper">
+	
+	<input 
+		:id="getFieldID(schema)"
+		:type="schema.inputType.toLowerCase()"
+		:value="value"
+		@input="onInput"
+		@blur="onBlur"
+		:class="schema.fieldClasses"
+		@change="schema.onChange || null"
+		:disabled="disabled"
+		:accept="schema.accept"
+		:alt="schema.alt"
+		:autocomplete="schema.autocomplete"
+		:checked="schema.checked"
+		:dirname="schema.dirname"
+		:formaction="schema.formaction"
+		:formenctype="schema.formenctype"
+		:formmethod="schema.formmethod"
+		:formnovalidate="schema.formnovalidate"
+		:formtarget="schema.formtarget"
+		:height="schema.height"
+		:list="schema.list"
+		:max="schema.max"
+		:maxlength="schema.maxlength"
+		:min="schema.min"
+		:minlength="schema.minlength"
+		:multiple="schema.multiple"
+		:name="schema.inputName"
+		:pattern="schema.pattern"
+		:placeholder="schema.placeholder"
+		:readonly="schema.readonly"
+		:required="schema.required"
+		:size="schema.size"
+		:src="schema.src"
+		:step="schema.step"
+		:width="schema.width"
+		:files="schema.files"
+		v-attributes="'input'"
+	/>
+
+	
+	<label v-if="fieldTypeHasLabel(schema)" :for="getFieldID(schema)" :class="schema.labelClasses">
+				
+		<span v-html="schema.label"></span>
+		<span v-if='schema.help' class="help">
+			<i class="icon"></i>
+			<div class="helpText" v-html='schema.help'></div>
+		</span>
+	</label>
+
+	<span class="helper" v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'">
+		{{value}}
+	</span>
+
+	
+
+
+</div>	
+	
 </template>
 
 <script>
@@ -107,6 +131,7 @@ export default {
 	},
 
 	mounted() {
+
 		switch (this.schema.inputType.toLowerCase()) {
 			case "number":
 			case "range":
@@ -165,5 +190,7 @@ export default {
 	.helper {
 		margin: auto 0.5em;
 	}
+
+
 }
 </style>

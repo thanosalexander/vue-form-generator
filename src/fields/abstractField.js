@@ -1,6 +1,7 @@
-import { get as objGet, forEach, isFunction, isString, isArray, debounce } from "lodash";
+import { get as objGet, forEach, isFunction, isString, isArray, debounce , isNil } from "lodash";
 import validators from "../utils/validators";
 import { slugifyFormID } from "../utils/schema";
+
 
 function convertValidator(validator) {
 	if (isString(validator)) {
@@ -71,6 +72,29 @@ export default {
 	},
 
 	methods: {
+
+		// Should field type have a label?
+		fieldTypeHasLabel(field) {
+			if (isNil(field.label)) return false;
+
+			let relevantType = "";
+			if (field.type === "input") {
+				relevantType = field.inputType;
+			} else {
+				relevantType = field.type;
+			}
+
+			switch (relevantType) {
+				case "button":
+				case "submit":
+				case "reset":
+					return false;
+				default:
+					return true;
+			}
+		},
+		
+
 		validate(calledParent) {
 			this.clearValidationErrors();
 			let validateAsync = objGet(this.formOptions, "validateAsync", false);
@@ -208,8 +232,10 @@ export default {
 			}
 		},
 
+
+
 		getFieldID(schema) {
-			const idPrefix = objGet(this.formOptions, "fieldIdPrefix", "");
+			const idPrefix = objGet(this.options || this.formOptions, "fieldIdPrefix", "");
 			return slugifyFormID(schema, idPrefix);
 		},
 
