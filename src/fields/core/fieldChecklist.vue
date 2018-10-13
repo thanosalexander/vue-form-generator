@@ -1,5 +1,5 @@
 <template lang="pug">
-	.wrapper(v-attributes="'wrapper'")
+	<div class="wrapper" v-attributes="'wrapper'">
 		.listbox.form-control(v-if="schema.listBox", :disabled="disabled")
 			.list-row(v-for="item in items", :class="{'is-checked': isItemChecked(item)}")
 				label
@@ -16,6 +16,20 @@
 					label
 						input(:id="getFieldID(schema)", type="checkbox", :checked="isItemChecked(item)", :disabled="disabled", @change="onChanged($event, item)", :name="getInputName(item)", v-attributes="'input'")
 						| {{ getItemName(item) }}
+
+						<label v-if="fieldTypeHasLabel(schema)" :for="getFieldID(schema)" :class="schema.labelClasses">
+									
+							<span v-html="schema.label"></span>
+							<span v-if='schema.help' class="help">
+								<i class="icon"></i>
+								<div class="helpText" v-html='schema.help'></div>
+							</span>
+						</label>
+
+						<span class="helper" v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'">
+							{{value}}
+						</span>
+	</div>
 </template>
 
 <script>
