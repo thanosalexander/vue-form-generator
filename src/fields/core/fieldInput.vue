@@ -50,6 +50,8 @@
 		</span>
 	</label>
 
+	<i class="mtrl-select"></i>
+
 	<span class="helper" v-if="schema.inputType.toLowerCase() === 'color' || schema.inputType.toLowerCase() === 'range'">
 		{{value}}
 	</span>
