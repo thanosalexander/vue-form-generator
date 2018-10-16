@@ -39,6 +39,7 @@
 		:width="schema.width"
 		:files="schema.files"
 		v-attributes="'input'"
+		:v-validate="schema.validations"
 	/>
 
 	
@@ -56,6 +57,7 @@
 		{{value}}
 	</span>
 
+	<div v-show="errors.has('login-form.email')" class="help-block invalid-feedback">{{ errors.first('login-form.email') }}</div>
 
 </div>	
 	

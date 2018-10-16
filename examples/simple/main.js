@@ -27,7 +27,12 @@ var vm = new Vue({
 					return "<span class=\"" + cls + "\">" + match + "</span>";
 				});
 			}
-		}
+		},
+
+		  inject: ['$validator'],
+
+
+	
 	},
 
 	data: {
@@ -63,7 +68,10 @@ var vm = new Vue({
 					required: true,
 					disabled: false,
 					placeholder: "User's name",
-					validator: VueFormGenerator.validators.string,
+					validations:{
+						'data'  :  'required|email',
+						'field' :  'login-form.email'
+					},
 					help:'errrrrrrrrrr'
 				},
 				{
