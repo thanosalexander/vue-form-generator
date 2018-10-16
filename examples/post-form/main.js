@@ -50,10 +50,9 @@ var vm = new Vue({
 					inputName: "name",
 					readonly: false,
 					featured: true,
-					required: true,
 					disabled: false,
 					placeholder: "User's name",
-					validator: VueFormGenerator.validators.string,
+					validator: ["email","required"],
 					attributes: [],
 					help:'eeeeeeeeeee'
 				},
@@ -69,8 +68,8 @@ var vm = new Vue({
 		},
 
 		formOptions: {
-			validateAfterLoad: false,
-			validateAfterChanged: false
+			validateAfterLoad: true,
+			validateAfterChanged: true
 		}
 	}
 });
