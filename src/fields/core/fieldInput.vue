@@ -1,6 +1,6 @@
 <template>
 
-<div class="'wrapper'">
+<div class="wrapper">
 	
 	<input 
 		:id="getFieldID(schema)"
